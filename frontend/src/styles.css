@@ -1,0 +1,184 @@
+/* -------- CORPORATE CLEAN UI (NO ANIMATIONS) -------- */
+
+:root {
+  --bg: #f7f7f7;
+  --card-bg: #ffffff;
+  --border: #e2e2e2;
+  --text: #222;
+  --muted: #666;
+  --success-bg: #e8f5e9;
+  --success: #1b5e20;
+  --unpub-bg: #f0f0f0;
+  --accent: #0a66c2;
+}
+
+/* Base layout */
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+  color: var(--text);
+}
+
+.app-wrap {
+  padding: 20px;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Connection badge */
+.conn-badge {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-weight: 600;
+  border: 1px solid var(--border);
+  font-size: 14px;
+}
+
+/* Button */
+.activity-btn {
+  padding: 6px 14px;
+  border-radius: 6px;
+  background: white;
+  border: 1px solid #ccc;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Cards grid (responsive) */
+.cards-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+/* Card */
+.dish-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  min-height: 320px;
+}
+
+/* Image */
+.dish-card img {
+  width: 100%;
+  height: 170px;
+  border-radius: 8px;
+  object-fit: cover;
+  margin-bottom: 12px;
+}
+
+/* Dish name */
+.dish-name {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* Status pill */
+.status-pill {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 13px;
+  display: inline-block;
+  border: 1px solid var(--border);
+  margin: 8px 0;
+}
+
+.status-pill.published {
+  background: var(--success-bg);
+  color: var(--success);
+  border-color: #c3e6cb;
+}
+
+.status-pill.unpublished {
+  background: var(--unpub-bg);
+  color: #555;
+  border-color: #d5d5d5;
+}
+
+/* Buttons */
+.primary-btn {
+  margin-top: auto;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.primary-btn.publish {
+  background: var(--accent);
+  color: white;
+}
+
+.primary-btn.unpublish {
+  background: #ededed;
+  color: #333;
+}
+
+/* Activity panel */
+.activity-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 320px;
+  height: 100vh;
+  background: white;
+  border-left: 1px solid var(--border);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  z-index: 999;
+}
+
+.activity-list {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+.activity-list ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.activity-list li {
+  font-size: 14px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+/* Scrollbar */
+.activity-list::-webkit-scrollbar {
+  width: 8px;
+}
+.activity-list::-webkit-scrollbar-thumb {
+  background: #d0d0d0;
+  border-radius: 6px;
+}

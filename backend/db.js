@@ -1,0 +1,18 @@
+// db.js
+const Database = require('better-sqlite3');
+const path = require('path');
+
+const dbPath = path.join(__dirname, 'data.sqlite');
+const db = new Database(dbPath);
+
+// create table if not exists
+db.prepare(`
+  CREATE TABLE IF NOT EXISTS dishes (
+    dishId TEXT PRIMARY KEY,
+    dishName TEXT NOT NULL,
+    imageUrl TEXT,
+    isPublished INTEGER NOT NULL
+  )
+`).run();
+
+module.exports = db;
