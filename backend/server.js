@@ -1,4 +1,3 @@
-// server.js
 const express = require("express");
 const cors = require("cors");
 const http = require("http");
@@ -14,7 +13,6 @@ const io = new Server(server, {
 app.use(cors());
 app.use(express.json());
 
-// Helper: fetch all dishes from DB
 function getAllDishes() {
   const rows = db.prepare("SELECT * FROM dishes").all();
   return rows.map(r => ({
@@ -23,13 +21,11 @@ function getAllDishes() {
   }));
 }
 
-// GET /api/dishes → Returns all dishes
 app.get("/api/dishes", (req, res) => {
   const dishes = getAllDishes();
   res.json(dishes);
 });
 
-// PATCH /api/dishes/:id/toggle → Toggle publish state
 app.patch("/api/dishes/:id/toggle", (req, res) => {
   const dishId = req.params.id;
 
@@ -44,18 +40,18 @@ app.patch("/api/dishes/:id/toggle", (req, res) => {
   const updatedDish = db.prepare("SELECT * FROM dishes WHERE dishId = ?").get(dishId);
   updatedDish.isPublished = Boolean(updatedDish.isPublished);
 
-  // real-time update
+
   io.emit("dishUpdated", updatedDish);
 
   res.json(updatedDish);
 });
 
-// Socket connection
+
 io.on("connection", (socket) => {
   console.log("Client connected:", socket.id);
 });
 
-// Start server
+
 server.listen(4000, () => {
   console.log("Backend running at http://localhost:4000");
 });

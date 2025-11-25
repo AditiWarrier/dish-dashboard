@@ -62,7 +62,7 @@ export default function App() {
       addActivity(`${updatedDish.dishName} ${status} (external)`);
 
       setLastUpdated(updatedDish.dishId);
-      setTimeout(() => setLastUpdated(null), 5000);
+      setTimeout(() => setLastUpdated(null), 8000);
     });
 
     return () => socket.disconnect();

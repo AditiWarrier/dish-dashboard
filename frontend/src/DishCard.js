@@ -2,7 +2,13 @@ import React from "react";
 
 export default function DishCard({ dish, onToggle, isExternal }) {
   return (
-    <div className="dish-card">
+    <div
+      className="dish-card"
+      style={{
+        backgroundColor: isExternal ? "#fff3cd" : "white", // ⭐ yellow flash
+        transition: "background-color 0.3s ease"
+      }}
+    >
       <img src={dish.imageUrl} alt={dish.dishName} />
 
       <div className="dish-name">{dish.dishName}</div>
